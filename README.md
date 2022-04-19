@@ -1,6 +1,6 @@
-# Learn VUE
+# 学习Vue
 
-## 学习Vue
+## Learn VUE
 
 ### Tasking
 
