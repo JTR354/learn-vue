@@ -7,11 +7,13 @@
 </script>
 
 <div id="app"></div>
-
+<pre>
+  If your preferred browser does not support import maps yet, you can polyfill it with es-module-shims.
+</pre>
 <script type="module">
   import { createApp } from "vue";
   import MyComponent from "./app.js";
-
+  // console.log(createApp);
   createApp({
     components: { MyComponent },
     data() {
