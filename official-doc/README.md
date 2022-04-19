@@ -4,7 +4,7 @@
 
 ### Tasking
 
-- [ ] Getting Started
+- [x] Getting Started
 - [ ] Essentials
 - [ ] Components In-Depth
 - [ ] Reusability
