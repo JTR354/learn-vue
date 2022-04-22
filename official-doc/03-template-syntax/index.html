@@ -1,0 +1,62 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  {{ message }}
+  <p>{{rawHtml}}</p>
+  <p v-html="rawHtml"></p>
+  <div v-bind:id="dynamicId">dynamicId</div>
+  <div :id="dynamicId">dynamicId</div>
+  <button :disabled="disabled">disabled</button>
+  <div v-bind="objectAttr">objectAttr</div>
+  <div :="objectAttr">objectAttr</div>
+  <pre>
+    v-bind === :
+  </pre>
+  <p>{{number + 1}}</p>
+  <p>{{ok ? 'Yes' : 'No'}}</p>
+  <p>{{message.split('').reverse().join('')}}</p>
+  <div :id="`list-${id}`">list-id</div>
+  <!-- <p>{{var a = 1}}</p> -->
+  <!-- <p>{{ if (ok) { return message } }}</p> -->
+  <p :title="toTitle()">{{formatData()}}</p>
+  <p v-if="message">Now you see me</p>
+  <a :href="url" target="_blank">baidu</a>
+  <p @click.prevent="onClick">click</p>
+  <!-- <a v-bind:[attributeName]="`http://www.baidu.com`">attributeName</a> -->
+  <!-- <a @[eventName]="onClick">eventName</a> -->
+  <form action="">
+    <button @click.prevent="onClick">prevent</button>
+  </form>
+</div>
+
+<script>
+  Vue.createApp({
+    // template: `
+    // <a v-bind:[attributeName]="url">attributeName</a>
+    // <a @[eventName]="onClick">eventName</a>
+    // `,
+    data() {
+      return {
+        message: "Hello Vue! with link",
+        rawHtml: `<span style="color: red">This should be red.</span>`,
+        dynamicId: "dynamicId",
+        disabled: true,
+        objectAttr: { id: "container", class: "wrapper" },
+        url: "http://www.baidu.com",
+        attributeName: "href",
+        eventName: "click",
+      };
+    },
+    methods: {
+      toTitle() {
+        return "toTitle";
+      },
+      formatData() {
+        return "formatData";
+      },
+      onClick() {
+        console.log("on click");
+      },
+    },
+  }).mount("#app");
+</script>

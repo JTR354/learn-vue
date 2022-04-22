@@ -1,0 +1,45 @@
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+</script>
+<div id="app"></div>
+<div id="container">
+  <h1>container{{count}}</h1>
+  <button @click="count++">add</button>
+</div>
+<script type="module">
+  import { createApp } from "vue";
+  const TodoDeleteButton = {
+    name: "TodoDeleteButton",
+    template: "<div>todo btn</div>",
+  };
+  const App = {
+    name: "App",
+    // components: { TodoDeleteButton },
+    data() {
+      return {
+        count: 0,
+      };
+    },
+    template: `<div>App
+        <TodoDeleteButton/>
+        <button @click="count++">{{count}}</button>
+      </div>`,
+  };
+
+  const app = createApp(App);
+  app.component("TodoDeleteButton", TodoDeleteButton);
+  app.mount("#app");
+  // 必须在app挂载前注册组件
+  // app.component("TodoDeleteButton", TodoDeleteButton);
+  createApp({
+    data() {
+      return {
+        count: 0,
+      };
+    },
+  }).mount("#container");
+</script>
