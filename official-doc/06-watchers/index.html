@@ -1,0 +1,86 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app">
+  <h1>watchers</h1>
+  <p>
+    Ask a yes/no question
+    <input type="text" v-model="question" />
+  </p>
+  <p>{{answer}}</p>
+  <hr />
+  <p>
+    <span id="some">{{some.nested.key}}</span>
+    <button @click="some.nested.key++">add</button>
+    <!-- <input type="text" v-mode="some.nested.key" /> -->
+  </p>
+</div>
+<script>
+  const { createApp } = Vue;
+  createApp({
+    name: "root",
+    data() {
+      return {
+        question: "",
+        answer: "questions usually contain a questions mark. ?:-)",
+        some: {
+          nested: {
+            key: 123,
+          },
+        },
+      };
+    },
+    created() {
+      /*手动解除watch*/
+      this.unwatch = this.$watch("question", (newQuestion) => {
+        console.log(newQuestion);
+      });
+    },
+    watch: {
+      // Note: only simple paths. Expressions are not supported
+      // "some.nested.key"(newValue) {
+      //   console.log(newValue, "watcher");
+      // },
+      some: {
+        handler(newValue) {
+          console.log(newValue.nested.key, "watcher");
+          console.log(
+            "watcher flush:post; 可以获取更新后的属性",
+            document.getElementById("some")?.innerText
+          );
+        },
+        immediate: true,
+        deep: true,
+        flush: "post",
+      },
+      question(newQuestion, oldQuestion) {
+        if (newQuestion.indexOf("?") > -1) {
+          this.getAnswer();
+        }
+      },
+    },
+    methods: {
+      async getAnswer() {
+        this.answer = "Thinking...";
+        // await sleep();
+        // this.answer;
+        try {
+          const res = await fetch("https://yesno.wtf/api");
+          this.answer = (await res.json()).answer;
+        } catch (error) {
+          this.answer = "Error! Could not reach the API.\n" + error;
+        }
+        this.unwatch();
+      },
+    },
+  }).mount("#app");
+
+  async function sleep(params) {
+    return new Promise((r) => setTimeout(r, 1000));
+  }
+</script>
+<script>
+  /*
+  1. 手动解除watch
+  2. watch flush post
+  3. watch 不推荐使用nested 推荐使用deep
+  */
+</script>

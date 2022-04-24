@@ -1,0 +1,51 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app">
+  <p>has published books:</p>
+  <!-- <span>{{author.books.length > 0 ? 'yes' : 'no'}}</span> -->
+  <span>computed: {{publishedBooksMessage}}</span>
+  <p>time: {{now}} --- {{count}}</p>
+  <button @click="update">update page</button>
+  <p>fullName => {{fullName}}</p>
+</div>
+<script>
+  const { createApp } = Vue;
+  createApp({
+    data() {
+      return {
+        firstName: "John",
+        lastName: "Done",
+        count: 0,
+        author: {
+          name: "John Done",
+          books: [
+            "vue2 - advanced guide",
+            "vue3 - basic guide",
+            "vue4 - the mystery",
+          ],
+        },
+      };
+    },
+    methods: {
+      update() {
+        this.count++;
+      },
+    },
+    computed: {
+      publishedBooksMessage() {
+        return this.author.books.length > 0 ? "yes" : "no";
+      },
+      now() {
+        console.log("now run...");
+        return Date.now();
+      },
+      fullName: {
+        get() {
+          return [this.firstName, this.lastName].join(" ");
+        },
+        set(newValue) {
+          [this.firstName, this.lastName] = newValue.split(" ");
+        },
+      },
+    },
+  }).mount("#app");
+</script>
