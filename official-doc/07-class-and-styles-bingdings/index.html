@@ -1,0 +1,62 @@
+<script src="https://unpkg.com/vue@3"></script>
+<style>
+  .active {
+    color: red;
+  }
+</style>
+<div id="app">
+  <h1>class and styles binding</h1>
+  <div class="static" :class="{active: isActive, 'text-danger': hasError}">
+    class object
+  </div>
+  <div :class="claassObject">classObject</div>
+  <div :class="computedObject">computedObject</div>
+  <div
+    :class="[isActive, hasError, isActive? 'hello' : 'world', {jtr: isActive}]"
+  >
+    array class
+  </div>
+  <hr />
+  <div :style="{display: ['-webkit-box', 'flex']}">styles component</div>
+  <hr />
+  <my-component />
+</div>
+<script>
+  const { createApp } = Vue;
+
+  const MyComponent = {
+    name: "MyComponent",
+    template: `
+    <div>
+        <h1>my component</h1>
+        <p :class="$attrs.class">attr class</p>
+      </div>
+      `,
+    mounted() {
+      console.log(this.$attrs);
+    },
+  };
+
+  createApp({
+    components: { MyComponent },
+    // template: `<my-component class="static" :class="{active: isActive}" abc/>`,
+    data() {
+      return {
+        isActive: true,
+        hasError: true,
+        classObject: {
+          active: true,
+          "text-danger": true,
+        },
+      };
+    },
+    computed: {
+      computedObject() {
+        return {
+          active: this.isActive && !this.hasError,
+          "text-danger": this.hasError ? "fatal" : "",
+        };
+      },
+    },
+  }).mount("#app");
+</script>
