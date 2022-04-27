@@ -10,7 +10,7 @@
   - [x] Template Syntax
   - [x] Reactivity Fundamentals
   - [x] Computed Properties
-  - [ ] Class and Style Bindings
+  - [x] Class and Style Bindings
   - [ ] Conditional Rendering
   - [ ] List Rendering
   - [ ] Event Handing

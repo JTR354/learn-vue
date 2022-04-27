@@ -1,0 +1,36 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  <h1>Conditional Rendering</h1>
+
+  <button @click="awesome = !awesome">toggle</button>
+  <h1 v-if="awesome">Vue is awesome</h1>
+  <h1 v-else>Oh no 😢</h1>
+  <hr />
+  <template v-if="ok">
+    <h1>template</h1>
+    <p>Paragraph</p>
+    <p>Paragraph</p>
+  </template>
+  <hr />
+  <div v-if="type === 'A'">A</div>
+  <div v-else-if="type === 'A'">B</div>
+  <div v-else-if="type === 'A'">C</div>
+  <div v-else="type === 'A'">D</div>
+  <hr />
+  <h1 v-show="awesome">Hello v-show</h1>
+</div>
+
+<script>
+  const { createApp } = Vue;
+
+  createApp({
+    name: "root",
+    data() {
+      return {
+        awesome: true,
+        ok: true,
+      };
+    },
+  }).mount("#app");
+</script>
