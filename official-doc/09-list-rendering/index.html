@@ -1,0 +1,59 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  <h1>List rendering</h1>
+  <ul>
+    <li v-for="({msg}, index) in items">
+      {{parentMessage}} - {{index}} - {{msg}}
+    </li>
+  </ul>
+  <hr />
+  <h2>v-for with an Object</h2>
+  <ul>
+    <li v-for="(value, key, index) in myObject">
+      {{index}}. {{key}} : {{value}}
+    </li>
+  </ul>
+  <hr />
+  <h2>v-for with a Range</h2>
+  <span v-for="n in 10">{{n}}</span>
+  <hr />
+  <h2>v-for vs v-if</h2>
+  <mark>v-if is stronger than v-for</mark>
+  <ul>
+    <template v-for="n in 10">
+      <li v-if="n%2" :key="n">{{n}}</li>
+    </template>
+  </ul>
+  <hr />
+  <h2>v-for with computed</h2>
+  <ul>
+    <template v-for="n in evenNumbers">
+      <li :key="n">{{n}}</li>
+    </template>
+  </ul>
+</div>
+
+<script>
+  const { createApp } = Vue;
+  createApp({
+    name: "root",
+    data() {
+      return {
+        myObject: {
+          title: "title",
+          author: "Jane Doe",
+          publishedAt: "20220427",
+        },
+        parentMessage: "Parent",
+        items: [{ msg: "foo" }, { msg: "bar" }],
+        numbers: new Array(20).fill(1).map((_, i) => i),
+      };
+    },
+    computed: {
+      evenNumbers() {
+        return this.numbers.filter((n) => n % 2 === 0);
+      },
+    },
+  }).mount("#app");
+</script>

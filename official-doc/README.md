@@ -11,8 +11,8 @@
   - [x] Reactivity Fundamentals
   - [x] Computed Properties
   - [x] Class and Style Bindings
-  - [ ] Conditional Rendering
-  - [ ] List Rendering
+  - [x] Conditional Rendering
+  - [x] List Rendering
   - [ ] Event Handing
   - [ ] Form Input Bindings
   - [ ] Lifecycle Hooks
