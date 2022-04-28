@@ -14,12 +14,19 @@
   - [x] Conditional Rendering
   - [x] List Rendering
   - [x] Event Handing
-  - [ ] Form Input Bindings
+  - [x] Form Input Bindings
   - [ ] Lifecycle Hooks
   - [x] Watchers
   - [ ] Template Refs
   - [ ] Components Basics
 - [ ] Components In-Depth
+  - [ ] Registration
+  - [ ] Props
+  - [ ] Events
+  - [ ] Fallthrough Attributes
+  - [ ] Slots
+  - [ ] Provide / inject
+  - [ ] Async Components
 - [ ] Reusability
 - [ ] Built-in Components
 - [ ] Scaling Up

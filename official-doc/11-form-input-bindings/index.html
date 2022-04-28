@@ -1,0 +1,105 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app">
+  <p>text => {{text}}</p>
+  <input type="text" v-model="text" placeholder="edit me" />
+  <textarea v-model="text" id="" cols="30" rows="10"></textarea>
+  <hr />
+  <input type="checkbox" id="checkbox" v-model="checked" />
+  <label for="checkbox">{{checked}}</label>
+  <hr />
+  <div>checked name: {{checkedNames}}</div>
+  <template v-for='it in ["jack", "john", "mike"]'>
+    <input type="checkbox" :id="it" :value="it" v-model="checkedNames" />
+    <label :for="it">{{it}}</label>
+  </template>
+  <hr />
+  <div>sex: {{sex}}</div>
+  <template v-for="it in ['male', 'fmale']">
+    <input type="radio" :id="it" :value="it" v-model="sex" />
+    <label :for="it">{{it}}</label>
+  </template>
+  <hr />
+  <div>selected: {{selected}}</div>
+  <select v-model="selected" multiple>
+    <option value="" disabled>Please select one</option>
+    <option v-for="it in ['A', 'B', 'C']" :value="it + 123">{{it}}</option>
+  </select>
+  <hr />
+  <input
+    type="checkbox"
+    v-model="toggle"
+    :true-value="dynamicTrueValue + 6"
+    :false-value="dynamicFalseValue + 8"
+  />
+  <p>value -> {{toggle}}</p>
+  <hr />
+  <input type="text" v-model.lazy="msg" />
+  <p>{{msg}}</p>
+  <hr />
+  <input type="text" v-model.number="msg" />
+  <p>{{msg}}</p>
+  <hr />
+  <input type="text" v-model.trim="msg" />
+  <p>{{msg}}</p>
+  <hr />
+  <h2>v-model in customer component</h2>
+  <p>p -> {{searchText}}</p>
+  <p>title -> {{title}}</p>
+  <customer-input v-model.abc="searchText" v-model:title.capitalize="title" />
+  <hr />
+</div>
+
+<script>
+  const CustomerInput = {
+    name: "customer-input",
+    props: ["modelValue", "title", "titleModifiers", "modelModifiers"],
+    emits: ["update:modelValue", "update:title"],
+    created() {},
+    computed: {
+      value: {
+        get() {
+          return this.modelValue;
+        },
+        set(val) {
+          this.$emit("update:modelValue", val);
+          if (this.modelModifiers.abc) {
+            console.log(this.modelModifiers);
+          }
+        },
+      },
+      titleValue: {
+        get() {
+          return this.title;
+        },
+        set(val) {
+          if (this.titleModifiers.capitalize) {
+            val = val.charAt(0).toUpperCase() + val.slice(1);
+          }
+          this.$emit("update:title", val);
+        },
+      },
+    },
+    template: `<div>
+      <input v-model="value" />
+       <input v-model="titleValue" /> 
+      </div>`,
+  };
+  Vue.createApp({
+    components: { CustomerInput },
+    data() {
+      return {
+        title: "title",
+        searchText: "text",
+        text: "",
+        checked: false,
+        checkedNames: [],
+        sex: "",
+        selected: "",
+        toggle: "",
+        dynamicTrueValue: "yes",
+        dynamicFalseValue: "no",
+        msg: "",
+      };
+    },
+  }).mount("#app");
+</script>
