@@ -1,0 +1,64 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app">
+  <h1>event handing</h1>
+  <button @click="greet">Greet</button>
+  <button @click="say('hello')">Say Hello</button>
+  <hr />
+  <!-- <button @click="warn('Form can not be submitted yet.', $event)"> -->
+  <button @click="(event) => warn('Form can not be submitted yet.', event)">
+    Submit
+  </button>
+  <hr />
+  <div @click.capture="doThis">capture</div>
+  <a @click.capture="doThis">once</a>
+  <div @click.capture="onScroll" style="height: 500px; border: 1px solid pink">
+    passive
+  </div>
+  <hr />
+  <input type="text" @keyup.enter="submit" />
+  <input type="text" @keyup.page-down="submit" />
+  <hr />
+  <button @click.ctrl.exact="onCtrlClick">A</button>
+  <button @click.exact="onExactClick">A</button>
+</div>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        name: "Vue.js",
+      };
+    },
+    methods: {
+      onExactClick(e) {
+        console.log(e, "exact");
+      },
+      onCtrlClick(e) {
+        console.log(e, "ctrl exact");
+      },
+      submit(e) {
+        console.log(e.target.value);
+        e.target.value = "";
+      },
+      onScroll(e) {
+        // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners
+        console.log("scroll", e);
+      },
+      doThis() {
+        console.log(123);
+      },
+      greet() {
+        alert(`Hello ${this.name}`);
+      },
+      say(msg) {
+        alert("say " + msg);
+      },
+      warn(msg, event) {
+        if (event) {
+          event.preventDefault();
+        }
+        alert(msg);
+      },
+    },
+  }).mount("#app");
+</script>

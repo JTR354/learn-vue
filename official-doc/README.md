@@ -13,7 +13,7 @@
   - [x] Class and Style Bindings
   - [x] Conditional Rendering
   - [x] List Rendering
-  - [ ] Event Handing
+  - [x] Event Handing
   - [ ] Form Input Bindings
   - [ ] Lifecycle Hooks
   - [x] Watchers
