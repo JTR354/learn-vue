@@ -1,0 +1,50 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app"></div>
+
+<script>
+  const MyButton = {
+    emits: {
+      submit(...args) {
+        throw 3;
+      },
+    },
+    methods: {
+      submitForm() {
+        try {
+          this.$emit("submit", 666);
+        } catch (e) {
+          this.$emit("failed", e);
+        }
+      },
+    },
+    template: `
+      <button @click="$emit('increaseBy', 2)">add count</button>
+      <button @click="submitForm">submit</button>
+    `,
+  };
+  Vue.createApp({
+    components: {
+      MyButton,
+    },
+    data() {
+      return {
+        count: 0,
+      };
+    },
+    methods: {
+      increaseCount(n, ...args) {
+        console.log(n, args, "i c");
+        this.count += 2 * n;
+      },
+      onFailed(e) {
+        console.log(e);
+      },
+    },
+    template: `
+      <p>count -> {{count}}</p>
+      <MyButton @increase-by="n => count += n" />
+        <MyButton @submit="increaseCount" @failed="onFailed" />
+    `,
+  }).mount("#app");
+</script>

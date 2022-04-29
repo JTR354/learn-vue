@@ -22,7 +22,7 @@
 - [ ] Components In-Depth
   - [ ] Registration
   - [ ] Props
-  - [ ] Events
+  - [x] Events
   - [ ] Fallthrough Attributes
   - [ ] Slots
   - [ ] Provide / inject
