@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app"></div>
+
+<script>
+  const MyComponent = {
+    name: "my-component",
+    props: ["count"],
+    created() {
+      console.log(MyComponent.name, "created");
+    },
+    beforeUpdate() {
+      console.log("my-component before update");
+    },
+    update() {
+      console.log(MyComponent.name, "update");
+    },
+    mounted() {
+      console.log(MyComponent.name, "mounted");
+    },
+    unmounted() {
+      console.log(MyComponent.name, "unmounted");
+    },
+    template: `<h2>child =>{{count}}</h2>`,
+  };
+  Vue.createApp({
+    name: "root",
+    components: { MyComponent },
+    data() {
+      return {
+        count: 0,
+      };
+    },
+    beforeUpdate() {
+      console.log("root before update");
+    },
+    template: `<div>
+      <button @click="count++">add</button>
+      <h1>parent => {{count}}</h1>
+      <my-component></my-component>
+      </div>`,
+  }).mount("#app");
+</script>

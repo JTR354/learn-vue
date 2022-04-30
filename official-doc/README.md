@@ -15,7 +15,7 @@
   - [x] List Rendering
   - [x] Event Handing
   - [x] Form Input Bindings
-  - [ ] Lifecycle Hooks
+  - [x] Lifecycle Hooks
   - [x] Watchers
   - [ ] Template Refs
   - [ ] Components Basics
