@@ -1,0 +1,52 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  <input type="text" ref="input" />
+  <hr />
+  <ul>
+    <li v-for="n in 10" ref="items">{{n}}</li>
+  </ul>
+  <hr />
+  <input type="text" :ref="refFn" />
+  <hr />
+  <child ref="child" />
+</div>
+
+<script>
+  const Child = {
+    name: "child",
+    expose: ["puM", "publicData"],
+    data() {
+      return {
+        publicData: "foo",
+        privateData: "bar",
+      };
+    },
+    methods: {
+      puM() {
+        // pum
+      },
+      prM() {
+        // prM
+      },
+    },
+    template: `<h2>child</h2>`,
+  };
+
+  Vue.createApp({
+    components: { Child },
+    created() {
+      console.log("created", this.$refs);
+    },
+    mounted() {
+      this.$refs.input.focus();
+      console.log(this.$refs, "mounted");
+      console.log(this.$refs.child, "mounted");
+    },
+    methods: {
+      refFn(...args) {
+        console.log(args, "refFN");
+      },
+    },
+  }).mount("#app");
+</script>
