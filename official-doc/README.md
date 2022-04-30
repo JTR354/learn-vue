@@ -17,8 +17,8 @@
   - [x] Form Input Bindings
   - [x] Lifecycle Hooks
   - [x] Watchers
-  - [ ] Template Refs
-  - [ ] Components Basics
+  - [x] Template Refs
+  - [x] Components Basics
 - [ ] Components In-Depth
   - [ ] Registration
   - [ ] Props
