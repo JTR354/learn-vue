@@ -1,0 +1,20 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="app">
+  <my-component></my-component>
+</div>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return { count: 0 };
+    },
+  });
+  const Child = {
+    template: `<div>child</div>`,
+  };
+  app.component("MyComponent", {
+    components: { Child },
+    template: `<div>my component<child/></div>`,
+  });
+  app.mount("#app");
+</script>

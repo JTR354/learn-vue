@@ -20,7 +20,7 @@
   - [x] Template Refs
   - [x] Components Basics
 - [ ] Components In-Depth
-  - [ ] Registration
+  - [x] Registration
   - [ ] Props
   - [x] Events
   - [ ] Fallthrough Attributes
