@@ -1,0 +1,70 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  <my-component
+    :="post"
+    greeting-message="hello"
+    propFF="danger"
+    v="d"
+  ></my-component>
+</div>
+
+<script>
+  const MyComponent = {
+    template: `
+      <h2>my component</h2>
+      <p>{{greetingMessage}}</p>
+      <p>{{title}}</p>
+      <p>{{id}}</p>
+      <p>{{propD}}</p>
+      <p>{{propE}}</p>
+      <p>propFF =>{{propFF}}</p>
+      <p>propG =>{{propG()}}</p>
+      <p>v =>{{v}}</p>
+    `,
+    props: {
+      title: String,
+      id: Number,
+      greetingMessage: {
+        type: String,
+        require: true,
+      },
+      propB: [String, Number],
+      propD: {
+        type: Number,
+        default: 100,
+      },
+      propE: {
+        type: Object,
+        default(rawProps) {
+          console.log(rawProps, "propE");
+          return { message: "hello" };
+        },
+      },
+      propFF: String,
+      // v: String,
+      v: {
+        validator(value) {
+          console.log("vvvv", value);
+          return true;
+          return ["success", "warn", "danger"].includes(value);
+        },
+      },
+      propG: {
+        type: Function,
+        default() {
+          return "Default function";
+        },
+      },
+    },
+  };
+  Vue.createApp({
+    name: "root",
+    components: { MyComponent },
+    data() {
+      return {
+        post: { title: "post title", id: 1 },
+      };
+    },
+  }).mount("#app");
+</script>

@@ -21,7 +21,7 @@
   - [x] Components Basics
 - [ ] Components In-Depth
   - [x] Registration
-  - [ ] Props
+  - [x] Props
   - [x] Events
   - [ ] Fallthrough Attributes
   - [ ] Slots
