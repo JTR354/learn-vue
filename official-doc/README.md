@@ -23,7 +23,7 @@
   - [x] Registration
   - [x] Props
   - [x] Events
-  - [ ] Fallthrough Attributes
+  - [x] Fallthrough Attributes
   - [ ] Slots
   - [ ] Provide / inject
   - [ ] Async Components

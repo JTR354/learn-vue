@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fallthrough attribute</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <div id="app">
+      <my-button
+        class="my-btn"
+        id="123"
+        style="color: red"
+        @click="parentClick"
+      ></my-button>
+      <custom-layout id="custom-layout" @click="changeValue"></custom-layout>
+    </div>
+    <script>
+      const CustomLayout = {
+        name: "customer layout",
+        created() {
+          console.log(this.$attrs);
+        },
+        template: `
+          <header>header</header>
+          <main :="$attrs">main</main>
+          <footer>footer</footer>
+        `,
+      };
+
+      // <button class=btn style="color:yellow" id="child" @click=childClick :=$attrs>My button</button>
+
+      const MyButton = {
+        name: "my-button",
+        // inheritAttrs: false,
+        template: `
+          <div class=btn-wrapper>
+          <button class=btn  :="$attrs">My button</button>
+          </div>
+        `,
+        methods: {
+          childClick() {
+            alert("child click");
+          },
+        },
+      };
+
+      Vue.createApp({
+        name: "root",
+        components: {
+          MyButton,
+          CustomLayout,
+        },
+        methods: {
+          parentClick() {
+            alert("parent click");
+          },
+          changeValue() {
+            alert("change value");
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
