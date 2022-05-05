@@ -5,7 +5,7 @@
 ### Tasking
 
 - [x] Getting Started
-- [ ] Essentials
+- [x] Essentials
   - [x] Creating an Application
   - [x] Template Syntax
   - [x] Reactivity Fundamentals
@@ -24,7 +24,7 @@
   - [x] Props
   - [x] Events
   - [x] Fallthrough Attributes
-  - [ ] Slots
+  - [x] Slots
   - [ ] Provide / inject
   - [ ] Async Components
 - [ ] Reusability
