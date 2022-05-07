@@ -25,7 +25,7 @@
   - [x] Events
   - [x] Fallthrough Attributes
   - [x] Slots
-  - [ ] Provide / inject
+  - [x] Provide / inject
   - [ ] Async Components
 - [ ] Reusability
 - [ ] Built-in Components
