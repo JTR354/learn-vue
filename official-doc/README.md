@@ -19,14 +19,14 @@
   - [x] Watchers
   - [x] Template Refs
   - [x] Components Basics
-- [ ] Components In-Depth
+- [x] Components In-Depth
   - [x] Registration
   - [x] Props
   - [x] Events
   - [x] Fallthrough Attributes
   - [x] Slots
   - [x] Provide / inject
-  - [ ] Async Components
+  - [x] Async Components
 - [ ] Reusability
 - [ ] Built-in Components
 - [ ] Scaling Up
