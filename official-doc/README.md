@@ -28,6 +28,9 @@
   - [x] Provide / inject
   - [x] Async Components
 - [ ] Reusability
+  - [ ] Composable
+  - [ ] Custom Directives
+  - [ ] Plugins
 - [ ] Built-in Components
 - [ ] Scaling Up
 - [ ] Best Practices
