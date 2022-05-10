@@ -28,7 +28,7 @@
   - [x] Provide / inject
   - [x] Async Components
 - [ ] Reusability
-  - [ ] Composable
+  - [x] Composable
   - [ ] Custom Directives
   - [ ] Plugins
 - [ ] Built-in Components

@@ -1,15 +1,40 @@
 <script setup>
 import { ref } from 'vue'
+import useMouse from '../hooks/useMouse'
+import useFetch from '../hooks/useFetch'
+
 
 defineProps({
   msg: String
 })
 
 const count = ref(0)
+const {x, y} = useMouse()
+// const {data, error} = useFetch('/public/stub/200.json')
+// const data = ref()
+// const error = ref()
+
+// fetch('/public/stub/200.json')
+//   .then(res => {
+//     return res.json()
+//   })
+//   .then(json=> {
+//     data.value = json
+//   })
+//   .catch(err => {
+//     error.value = err
+//   })
+const url = ref('')
+const {data, error} = useFetch(url)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <input type="text" v-model.lazy="url">
+  <p>url => {{url}}</p>
+  <div v-if="error">{{error?.message}}</div>
+  <div v-else>data loaded => {{data}}</div>
+  <hr>
+  <h1>{{ msg }} {{x}}, {{y}}</h1>
 
   <p>
     Recommended IDE setup:
