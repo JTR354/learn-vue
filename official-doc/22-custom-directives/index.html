@@ -1,0 +1,44 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+  <input type="text" v-focus />
+  <hr />
+  <custom-component />
+</div>
+
+<script>
+  const focus = {
+    mounted: (el) => {
+      console.log("v-focus");
+      el.focus();
+    },
+  };
+
+  const CustomComponent = {
+    name: "custom-component",
+    template: `<input v-focus v-my-directive:foo.bar=123 v-color="'red'" />`,
+  };
+
+  const app = Vue.createApp({
+    name: "root",
+    // directives: {
+    //   focus,
+    // },
+    components: { CustomComponent },
+  });
+
+  app.directive("focus", focus);
+
+  app.directive("myDirective", {
+    created(el, binding, vnode, prevVnode) {
+      console.log(el, binding, vnode, prevVnode);
+    },
+  });
+
+  app.directive("color", (el, binding) => {
+    console.log(el, binding);
+    el.style.color = binding.value;
+  });
+
+  app.mount("#app");
+</script>
