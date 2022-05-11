@@ -29,7 +29,7 @@
   - [x] Async Components
 - [ ] Reusability
   - [x] Composable
-  - [ ] Custom Directives
+  - [x] Custom Directives
   - [ ] Plugins
 - [ ] Built-in Components
 - [ ] Scaling Up
