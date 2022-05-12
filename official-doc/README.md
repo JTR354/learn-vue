@@ -30,7 +30,7 @@
 - [ ] Reusability
   - [x] Composable
   - [x] Custom Directives
-  - [ ] Plugins
+  - [x] Plugins
 - [ ] Built-in Components
 - [ ] Scaling Up
 - [ ] Best Practices
