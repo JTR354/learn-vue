@@ -32,6 +32,11 @@
   - [x] Custom Directives
   - [x] Plugins
 - [ ] Built-in Components
+  - [ ] Transition
+  - [ ] TransitionGroup
+  - [ ] KeepAlive
+  - [ ] Teleport
+  - [ ] Suspense
 - [ ] Scaling Up
 - [ ] Best Practices
 - [ ] TypeScript
