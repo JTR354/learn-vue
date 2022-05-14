@@ -32,7 +32,7 @@
   - [x] Custom Directives
   - [x] Plugins
 - [ ] Built-in Components
-  - [ ] Transition
+  - [x] Transition
   - [ ] TransitionGroup
   - [ ] KeepAlive
   - [ ] Teleport
