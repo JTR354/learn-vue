@@ -33,7 +33,7 @@
   - [x] Plugins
 - [ ] Built-in Components
   - [x] Transition
-  - [ ] TransitionGroup
+  - [x] TransitionGroup
   - [ ] KeepAlive
   - [ ] Teleport
   - [ ] Suspense
